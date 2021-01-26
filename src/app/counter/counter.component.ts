@@ -11,16 +11,17 @@ import { logInfo } from '../logger/store';
   template: `
     <div class="counter">
       <div>Duplicated value:</div>
-      <div>{{ localCount | async }}</div>
+      <div>{{ localCount$ | async }}</div>
     </div>
   `,
   styleUrls: ['./counter.component.scss']
 })
-export class CounterComponent {
-  localCount: Observable<number>;
+export class CounterComponent implements OnInit {
+  localCount$: Observable<number>;
 
-  constructor(private store: Store) {
-    this.localCount = this.store.pipe(
+  constructor(private store: Store) {}
+  ngOnInit(): void {
+    this.localCount$ = this.store.pipe(
       select(count),
       map(v => v * 2)
     );
