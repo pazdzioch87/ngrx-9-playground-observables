@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { add, substract } from './counter.actions';
+import { add, counterTick,  substract } from './counter.actions';
 
 import { CounterState } from './counter.state';
 
@@ -16,7 +16,7 @@ const reducer = createReducer(
       count: state.count - payload.value
     }
   }),
-  on(substract, (state) => {
+  on(counterTick, (state) => {
     return {
       ...state,
       count: state.count + 1
