@@ -9,9 +9,8 @@ export const randomAdd = createAction(
   '[Counter] Add random value'
 );
 
-export const foo = createAction(
-  '[Counter] Foo value',
-  props<{ payload: { value: string } }>()
+export const counterTick = createAction(
+  '[Counter] tick'
 );
 
 export const substract = createAction(

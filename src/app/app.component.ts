@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { interval, Observable, of } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { count, randomAdd, substract, counterTick } from './counter/store';
+import { map, tap, mergeMap, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'my-app',
@@ -23,4 +27,10 @@ import { Component } from '@angular/core';
     `
   ]
 })
-export class AppComponent {}
+export class AppComponent {
+  engine: Observable<number>;
+
+  constructor(private store:Store){
+    this.engine = interval(1000).pipe(tap(a => this.store.dispatch(counterTick())));
+  }
+}

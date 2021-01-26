@@ -15,6 +15,12 @@ const reducer = createReducer(
       ...state,
       count: state.count - payload.value
     }
+  }),
+  on(substract, (state) => {
+    return {
+      ...state,
+      count: state.count + 1
+    }
   })
 );
 
