@@ -20,6 +20,9 @@ export class CounterComponent {
   localCount: Observable<number>;
 
   constructor(private store: Store) {
-    this.localCount = this.store.pipe(select(count));
+    this.localCount = this.store.pipe(
+      select(count),
+      map(v => v * 2)
+    );
   }
 }
